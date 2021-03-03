@@ -89,3 +89,6 @@ release.json
 messages.mo
 
 docker/requirements-local.txt
+
+base_datos/CSV/*
+base_datos/CSV.zip
