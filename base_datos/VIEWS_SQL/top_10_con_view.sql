@@ -20,4 +20,4 @@ WHERE
 	p.person_id=pc.person_id AND 
 	c.con_id=pc.con_id AND 
 	c.macro IN 	
-		(SELECT c.macro from contribution as c, person_contribution as pc WHERE pc.con_id=c.con_id GROUP BY c.macro ORDER BY COUNT(*) DESC LIMIT 10);
+		(SELECT c.macro from top_10_con_table as c);
