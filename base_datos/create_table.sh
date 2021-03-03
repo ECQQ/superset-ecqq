@@ -22,7 +22,7 @@ echo "Copiando archivos al contenedor"
 	
 docker cp CSV superset_db:/data
 
-tables=(region comuna dialogue person emotion contribution person_contribution person_emotion)
+tables=(region comuna dialogue person emotion need contribution person_contribution person_emotion person_need)
 
 views=(person_view contribution_view top_10_con_view top_50_con_view top_10_emo_view top_50_emo_view)
 
@@ -35,6 +35,8 @@ for file in "${tables[@]}"; do
 	echo "poblando $file"	
 	if [[ "$file" == "contribution" ]]; then
 		docker exec -it superset_db psql -h localhost -p $puerto -U $rol $db -f /data/CSV/contribution_data.sql
+	elif [[ "$file" == "need" ]]; then
+		docker exec -it superset_db psql -h localhost -p $puerto -U $rol $db -f /data/CSV/need_data.sql	
 	else
 		csv_query="COPY $file FROM '/data/CSV/$file.csv' WITH DELIMITER ',' CSV HEADER;"	
 		docker exec -it superset_db psql -h localhost -p $puerto -U $rol $db  -c "$csv_query"	
