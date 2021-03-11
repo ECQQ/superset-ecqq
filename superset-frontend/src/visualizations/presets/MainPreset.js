@@ -23,10 +23,10 @@ import {
 } from '@superset-ui/legacy-preset-chart-big-number';
 import CalendarChartPlugin from '@superset-ui/legacy-plugin-chart-calendar';
 import ChordChartPlugin from '@superset-ui/legacy-plugin-chart-chord';
-import CountryMapChartPlugin from '@superset-ui/legacy-plugin-chart-country-map';
 import EventFlowChartPlugin from '@superset-ui/legacy-plugin-chart-event-flow';
 import ForceDirectedChartPlugin from '@superset-ui/legacy-plugin-chart-force-directed';
 import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
+import CountryMapChartPlugin from '@ecqq/legacy-plugin-chart-country-map-chile';
 import HistogramChartPlugin from '@superset-ui/legacy-plugin-chart-histogram';
 import HorizonChartPlugin from '@superset-ui/legacy-plugin-chart-horizon';
 import MapBoxChartPlugin from '@superset-ui/legacy-plugin-chart-map-box';
@@ -89,6 +89,11 @@ export default class MainPreset extends Preset {
         new FilterBoxChartPlugin().configure({ key: 'filter_box' }),
         new ForceDirectedChartPlugin().configure({ key: 'directed_force' }),
         new HeatmapChartPlugin().configure({ key: 'heatmap' }),
+        // new WaterfallChartPlugin().configure({ key: 'ecqq_waterfall' }),
+        // new ComposedChart().configure({ key: 'ecqq_composed' }),
+        // new PieChartPlugin().configure({ key: 'ecqq_pie_chart' }),
+        // new StatusChartPlugin().configure({ key: 'ecqq_status_chart' }),
+        // new TablePivotChartPlugin().configure({ key: 'ecqq_table_chart' }),
         new HistogramChartPlugin().configure({ key: 'histogram' }),
         new HorizonChartPlugin().configure({ key: 'horizon' }),
         new LineChartPlugin().configure({ key: 'line' }),
