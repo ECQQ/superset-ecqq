@@ -152,7 +152,7 @@ this line has to include the version of the package
 
 ### Modifying the source code
 
-To add the plugin to the frontend, we can follow this official tutorial [building custom viz plugins](https://superset.apache.org/docs/installation/building-custom-viz-plugins) 
+To add the plugin to the frontend, we can follow this official tutorial, but only the part that modifies the javascript code in the src directory [building custom viz plugins](https://superset.apache.org/docs/installation/building-custom-viz-plugins) 
 
 ### Installing the pacakges
 
