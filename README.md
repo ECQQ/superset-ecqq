@@ -134,6 +134,45 @@ Want to add support for your datastore or data engine? Read more [here](https://
 
 [Extended documentation for Superset](https://superset.apache.org/docs/installation/installing-superset-using-docker-compose)
 
+## Adding plugins to superset-frontend
+
+To add a new plugin to superset, we need to add the plugin as a dependency, then modify the code, install the packages and finally build the new docker image.
+
+### Adding the plugin as a dependency
+
+All the plugins are uploaded to npmjs.com under the organization [ecqq](https://www.npmjs.com/org/ecqq).
+
+We need to edit the file package.json in the superset-frontend directory to add the plugin as a dependency, to do so we add a line in under dependencies, for example, the plugin [legacy-plugin-chart-country-map-chile](https://www.npmjs.com/package/@ecqq/legacy-plugin-chart-country-map-chile) is added as:
+
+```
+"@ecqq/legacy-plugin-chart-country-map-chile": "^0.17.16",
+```
+
+this line has to include the version of the package
+
+### Modifying the source code
+
+To add the plugin to the frontend, we can follow this official tutorial [building custom viz plugins](https://superset.apache.org/docs/installation/building-custom-viz-plugins) 
+
+### Installing the pacakges
+
+After we have added the plugin as a dependency and we have imported the plugin into the code, we have to run the following command under the superset-frontend directory
+
+```
+npm install
+```
+
+### Creating the new Docker image
+
+After all this we have to create a new docker image. first we have to go in the root directory and execute the following command:
+
+```
+docker build -t ecqq:superset .
+```
+
+where ecqq:superset is the name of this new docker image, this name is important because is the name used in the docker-compose file.
+
+
 ## Get Involved
 
 * Ask and answer questions on [StackOverflow](https://stackoverflow.com/questions/tagged/apache-superset) using the **apache-superset** tag
