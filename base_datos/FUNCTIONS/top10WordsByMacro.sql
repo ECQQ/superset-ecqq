@@ -1,8 +1,3 @@
-CREATE TABLE top_need_word_table (
-    palabra_inicio varchar(64),
-    macro varchar(128)
-);
-
 CREATE OR REPLACE FUNCTION getTop10WordsByMacro() RETURNS void AS $$
 declare
     TEMPROW record;
@@ -22,5 +17,3 @@ FOR temprow IN
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
-
-SELECT * FROM getTop10WordsByMacro();

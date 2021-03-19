@@ -1,4 +1,4 @@
-CREATE VIEW top_10_need AS
+CREATE VIEW top_need_view AS
 	
 SELECT 
 	p.person_id, 
@@ -18,11 +18,13 @@ FROM
 	need as n, 
 	person_need as pn,
 	pair_words as w,
-	need_pair as np
+	need_pairs as np
 WHERE 
 	p.person_id=pn.person_id AND 
 	n.need_id=pn.need_id AND
 	np.need_id=n.need_id AND
 	np.pair_id=w.pair_id AND
 	w.palabra_inicio IN 	
-		(SELECT tnw.palabra_inicio from top_need_word_table as tnw);
+		(SELECT tnw.palabra_inicio from top_need_word_table as tnw where tnw.macro = n.macro) AND
+	w.palabra_fin IN (SELECT tnw.palabra_inicio from top_need_word_table as tnw where tnw.macro = n.macro);
+
