@@ -1,4 +1,4 @@
-CREATE VIEW top_need_view AS
+CREATE TABLE top_need_view AS
 	
 SELECT 
 	p.person_id, 
