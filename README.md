@@ -154,7 +154,7 @@ this line has to include the version of the package
 
 To add the plugin to the frontend, we can follow this official tutorial, but only the part that modifies the javascript code in the src directory [building custom viz plugins](https://superset.apache.org/docs/installation/building-custom-viz-plugins) 
 
-### Installing the pacakges
+### Installing the dependencies with the plugin
 
 After we have added the plugin as a dependency and we have imported the plugin into the code, we have to run the following command under the superset-frontend directory
 

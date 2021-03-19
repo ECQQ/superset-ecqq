@@ -22,11 +22,11 @@ echo "Copiando archivos al contenedor"
 	
 docker cp CSV superset_db:/data
 
-tables=(region comuna dialogue person emotion need contribution person_contribution person_emotion person_need)
+tables=(region comuna dialogue person emotion need pair_words need_pairs contribution person_contribution person_emotion person_need)
 
-views=(person_view contribution_view top_10_con_view top_50_con_view top_10_emo_view top_50_emo_view)
+views=(person_view contribution_view need_view top_10_con_view top_50_con_view top_10_emo_view top_50_emo_view top_need_views)
 
-tops=(top_10_con_table top_10_emo_table top_50_con_table top_50_emo_table)
+tops=(top_10_con_table top_10_emo_table top_50_con_table top_50_emo_table top_need_word_table top_10_need_macro_table)
 
 for file in "${tables[@]}"; do
 	echo "creando tabla $file"
