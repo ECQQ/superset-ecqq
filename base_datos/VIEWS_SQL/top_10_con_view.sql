@@ -1,4 +1,4 @@
-CREATE VIEW top_10_need AS
+CREATE VIEW top_10_con AS
 	
 SELECT 
 	p.person_id, 
