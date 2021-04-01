@@ -24,7 +24,7 @@ import {
 import CalendarChartPlugin from '@superset-ui/legacy-plugin-chart-calendar';
 import ChordChartPlugin from '@superset-ui/legacy-plugin-chart-chord';
 import EventFlowChartPlugin from '@superset-ui/legacy-plugin-chart-event-flow';
-// import ForceDirectedChartPlugin from '@superset-ui/legacy-plugin-chart-force-directed';
+import ForceDirectedChartPlugin from '@superset-ui/legacy-plugin-chart-force-directed';
 import HeatmapChartPlugin from '@superset-ui/legacy-plugin-chart-heatmap';
 import CountryMapChartPlugin from '@ecqq/legacy-plugin-chart-country-map-chile';
 import HistogramChartPlugin from '@superset-ui/legacy-plugin-chart-histogram';
@@ -88,7 +88,7 @@ export default class MainPreset extends Preset {
         new DualLineChartPlugin().configure({ key: 'dual_line' }),
         new EventFlowChartPlugin().configure({ key: 'event_flow' }),
         new FilterBoxChartPlugin().configure({ key: 'filter_box' }),
-        // new ForceDirectedChartPlugin().configure({ key: 'directed_force' }),
+        new ForceDirectedChartPlugin().configure({ key: 'directed_force' }),
         new HeatmapChartPlugin().configure({ key: 'heatmap' }),
         // new WaterfallChartPlugin().configure({ key: 'ecqq_waterfall' }),
         // new ComposedChart().configure({ key: 'ecqq_composed' }),
@@ -114,7 +114,7 @@ export default class MainPreset extends Preset {
         new TreemapChartPlugin().configure({ key: 'treemap' }),
         new WordCloudChartPlugin().configure({ key: 'word_cloud' }),
         new WorldMapChartPlugin().configure({ key: 'world_map' }),
-        new WordGraphChartPlugin().configure({ key: 'directed_force' }),
+        new WordGraphChartPlugin().configure({ key: 'word_graph' }),
         new EchartsTimeseriesChartPlugin().configure({
           key: 'echarts_timeseries',
         }),

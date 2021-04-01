@@ -1754,7 +1754,7 @@ class DirectedForceViz(BaseViz):
     credits = 'd3noob @<a href="http://bl.ocks.org/d3noob/5141278">bl.ocks.org</a>'
     is_timeseries = False
 
-    def query_obj(self):
+    def query_obj(self) -> QueryObjectDict:
         qry = super().query_obj()
         if len(self.form_data["groupby"]) != 2:
             raise QueryObjectValidationError(_("Pick exactly 2 columns to 'Group By'"))
@@ -1762,8 +1762,35 @@ class DirectedForceViz(BaseViz):
         return qry
 
     def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
         df.columns = ["source", "target", "value"]
         return df.to_dict(orient="records")
+
+class WordGraphViz(BaseViz):
+
+    """An animated directed force layout graph visualization"""
+
+    viz_type = "directed_force"
+    verbose_name = _("Directed Force Layout")
+    credits = 'd3noob @<a href="http://bl.ocks.org/d3noob/5141278">bl.ocks.org</a>'
+    is_timeseries = False
+
+    def query_obj(self) -> QueryObjectDict:
+        qry = super().query_obj()
+        if len(self.form_data["groupby"]) != 2:
+            raise QueryObjectValidationError(_("Pick exactly 2 columns to 'Group By'"))
+        qry["metrics"] = [self.form_data["metric"]]
+        if self.form_data.get("sort_by_metric", False):
+            qry["orderby"] = [(qry["metrics"][0], False)]
+        return qry
+
+    def get_data(self, df: pd.DataFrame) -> VizData:
+        if df.empty:
+            return None
+        df.columns = ["source", "target", "value"]
+        return df.to_dict(orient="records")        
+
 
 
 class ChordViz(BaseViz):
