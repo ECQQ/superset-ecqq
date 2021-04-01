@@ -94,7 +94,7 @@
     "@superset-ui/plugin-chart-word-cloud": "^0.16.9",
     "@superset-ui/preset-chart-xy": "^0.16.9",
     "@ecqq/legacy-plugin-chart-country-map-chile": "^0.17.16",
-    "@ecqq/legacy-plugin-chart-word-graph": "^0.17.20",
+    "@ecqq/legacy-plugin-chart-word-graph": "^0.17.21",
     "@vx/responsive": "^0.0.195",
     "abortcontroller-polyfill": "^1.1.9",
     "antd": "^4.9.4",
