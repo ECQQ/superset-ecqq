@@ -157,11 +157,11 @@ descarga la repo con los scripts para cargar la BD
 git clone https://github.com/ECQQ/preprocessing
 ```
 
-Descarga el zip los archivos csv's de los datos y un archivo sql con el backup de los dashboards de superset
+Descarga el zip los archivos csv's de los datos y un archivo sql con el backup de los dashboards de superset.
 
-link csvs 
+[data-final.zip](https://drive.google.com/file/d/1bgMpIMipvGo3BLaYNW7pivsgr-KTLAgM/view?usp=sharing)
 
-link sql
+[back_up.sql](https://drive.google.com/file/d/1OM3Avv2sTF1aIVVrQ6ecMGWFYXfqsIcR/view?usp=sharing)
 
 Mueve los archivos a la repo
 
