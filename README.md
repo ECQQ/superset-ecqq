@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-## Como instalar docker localmente
+## Como instalar superset localmente
 
 ### Paso 1: Instalar docker y docker-compose
 
