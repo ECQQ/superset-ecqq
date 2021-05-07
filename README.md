@@ -17,6 +17,191 @@ specific language governing permissions and limitations
 under the License.
 -->
 
+## Como instalar docker localmente
+
+### Paso 1: Instalar docker y docker-compose
+
+**docker**
+
+Actualizar el indice de paquetes e instala los prerequisitos:
+
+```
+sudo apt-get update
+```
+
+```
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+ ```
+ 
+Luego añade la clave de GPC de docker
+
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+Añade el repositorio oficial
+
+```
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```  
+
+Instala Docker Engine
+
+Actualiza apt e isntala docker
+
+```
+sudo apt-get update
+```
+
+```
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+Agrega tu usario al grupo docker
+
+```
+sudo usermod -aG docker $USER
+```
+
+Haz log out y log y verifica que se haya instalado corriendo hello-world
+
+```
+sudo docker run hello-world
+```
+
+Deberias ver el siguiente mensaje:
+```
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+b8dfde127a29: Pull complete 
+Digest: sha256:f2266cbfc127c960fd30e76b7c792dc23b588c0db76233517e1891a4e357d519
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+ ```
+ 
+**docker-compose**
+
+Descarga la version 1.29.1 de docker-compose
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+Otorgale permisos de ejecución a los binarios
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Reinicia el sistema
+
+### Paso 2: Clonar repositorio
+```
+git clone https://github.com/ECQQ/superset-ecqq
+```
+
+Lanzar superset con docker-compose
+
+```
+cd superset-ecqq
+```
+```
+sudo docker-compose up
+```
+
+Esto puede tomar tiempo, debes ser paciente.
+
+Cuando termine deberias ver un mensaje como:
+
+```
+superset_init            | Init Step 4/4 [Complete] -- Loading examples
+superset_init            | 
+superset_init            | 
+superset_init            | ######################################################################
+superset_init            | 
+superset_init exited with code 0
+```
+
+Si todo salió bien, entra a http://localhost:8088. Deberías ver una ventana para hacer login
+
+### Paso 3: Restablecer bd con datos y dashboards
+
+descarga la repo con los scripts para cargar la BD
+
+```
+git clone https://github.com/ECQQ/preprocessing
+```
+
+Descarga el zip los archivos csv's de los datos y un archivo sql con el backup de los dashboards de superset
+
+link csvs 
+
+link sql
+
+Mueve los archivos a la repo
+
+```
+mv data-final.zip preprocessing/db
+```
+```
+mv back_up.sql preprocessing/db
+```
+
+Entra al repo y descomprime los archivos
+
+```
+cd preprocessing/db
+```
+```
+unzip data-final.zip
+```
+
+Corre el script para restaurar los dashboards
+
+```
+./restore_database.sh
+```
+
+Corre el script para subir los datos a la base de datos
+
+```
+./upload_data
+```
+
+## Paso 5: Login en superset
+
+Entra a http://localhost:8088, deberías ver una ventana de inicio de sesión.
+
+Para entrar debes usar el usuario admin y contraseña admin.
+
+Y listo, ya tienes superset corriendo localmente, puedes explorar los datos, dashboards y graficos.
+
+
 Superset
 =========
 
